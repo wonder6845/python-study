@@ -1,7 +1,5 @@
 POSITION = "center"
-FONT = "Arial"
-SIZE = 18
-TYPE = "normal"
+FONT = ("Arial", 18, "normal")
 from turtle import Turtle
 
 class Score_Board(Turtle):
@@ -22,4 +20,9 @@ class Score_Board(Turtle):
 
 
     def update(self):
-        self.write(f"Score: {self.score}", move=False, align=POSITION, font=(FONT, SIZE, TYPE))
+        self.write(f"Score: {self.score}", move=False, align=POSITION, font=FONT)
+
+
+    def game_over(self):
+        self.goto(0, 0)
+        self.write("Game Over", move=False, align=POSITION, font=FONT)
