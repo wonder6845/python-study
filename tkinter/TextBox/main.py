@@ -6,7 +6,7 @@ class Window(Tk):
         # Window 설정
         self.title("My First GUI Program")
         self.minsize(width=500, height=300)
-        self.config(padx=300, pady=150)
+        self.config(padx=20, pady=20)
 
         # 레이블 생성
         self.label = Label(text="This is a Label", font=("Arial", 15, "bold"))
@@ -14,7 +14,7 @@ class Window(Tk):
         
         # 버튼 생성
         self.button = Button(text="This is a button", command=self.button_clicked)
-        self.button.grid(column=2, row=2)
+        self.button.grid(column=1, row=1)
         
         # Entry 생성
         self.input = Entry(width=10)
@@ -24,9 +24,12 @@ class Window(Tk):
     # 버튼 클릭시 실행되는 메소드
     def button_clicked(self):
         print("I got clicked")
+        
         new_text = self.input.get()
-        self.label.config(text=new_text)
-        print(new_text)
+        # 만약 비어있는 경우 라벨 갱신
+        if new_text:
+            self.label.config(text=new_text)
+            print(new_text)
     
     # Add New Button
     def add_new_button(self, text, column, row):
