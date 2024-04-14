@@ -12,11 +12,12 @@ LONG_BREAK_MIN = 20
 # ---------------------------- TIMER RESET ------------------------------- # 
 
 # ---------------------------- TIMER MECHANISM ------------------------------- # 
-
+def start_timer():
+    count_down(5)
 # ---------------------------- COUNTDOWN MECHANISM ------------------------------- # 
 
 def count_down(count):
-    title_label.itemconfig(timer_text, text=count)
+    canvas.itemconfig(timer_text, text=count)
     if count > 0:
         window.after(1000, count_down, count - 1)
         
@@ -43,12 +44,11 @@ tomato_img = tkinter.PhotoImage(file="tomato.png")
 canvas.create_image(105, 110, image=tomato_img)
 
 timer_text = canvas.create_text(103, 130, text="00:00", fill="white", font=(FONT_NAME, 35, "bold"),tags=str)
-canvas.grid(column=1, row=2)
-
+canvas.grid(column=1, row=1)
 
 
 # Button
-start_button = tkinter.Button(text="Start", highlightthickness=0)
+start_button = tkinter.Button(text="Start", highlightthickness=0, command=start_timer)
 start_button.grid(column=0, row=3)
 
 reset_button = tkinter.Button(text="Reset", highlightthickness=0)
